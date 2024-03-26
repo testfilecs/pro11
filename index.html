@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+     button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+    <button onclick="myFunction()"></button>
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+    
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+    
+document.getElementById("myInput").value = `
+10: Abstract Class for Calculating Perimeter
+using System;public abstract class Shape
+{
+public abstract double GetPerimeter();
+public abstract double GetArea();
+}public class Circle : Shape
+{
+private double radius;
+private readonly double pi = Math.PI;public Circle()
+{
+this.radius = 1;
+}public Circle(double radius)
+{
+this.radius = radius;
+}public override double GetArea()
+{
+return pi * Math.Pow(radius, 2);
+}public override double GetPerimeter()
+{
+return 2 * pi * radius;
+}
+}public class Triangle : Shape
+{
+private double width, height;public Triangle()
+{
+this.width = 1;
+this.height = 1;
+}public Triangle(double width, double height)
+{
+this.width = width;
+this.height = height;
+}public override double GetArea()
+{
+return width * height;
+}public override double GetPerimeter()
+{
+return width + height + Math.Sqrt(Math.Pow(width, 2) + Math.Pow(height, 2));
+}
+}public class ShapeClient
+{
+public static void Main(string[] args)
+{
+double width = 13, length = 9;
+Shape triangle = new Triangle(width, length);
+Console.WriteLine("The width of the triangle is: " + width
++ "\nThe height of the triangle is: " + length
++ "\nThe area of the triangle is: " + triangle.GetArea()
++ "\nThe perimeter of the triangle is: " + triangle.GetPerimeter() + ".");double radius = 3;
+Shape circle = new Circle(radius);
+Console.WriteLine("\nThe radius of the circle is: " + radius
++ "\nThe area of the circle is: " + circle.GetArea()
++ "\nThe perimeter of the circle is: " + circle.GetPerimeter() + ".");
+}
+}
+Output:
+The width of the triangle is: 13
+The height of the triangle is: 9
+The area of the triangle is: 117
+The perimeter of the triangle is: 37.8113883008419.The radius of the circle is: 3
+The area of the circle is: 28.274333882308138
+The perimeter of the circle is: 18.84955592153876.
+`
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
